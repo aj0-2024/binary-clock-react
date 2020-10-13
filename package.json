@@ -52,5 +52,8 @@
     "binary-clock-core": "^2.0.0",
     "classnames": "^2.2.6",
     "react-jss": "^10.4.0"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.10"
   }
 }
