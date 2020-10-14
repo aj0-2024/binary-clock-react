@@ -54,6 +54,9 @@
     "react-jss": "^10.4.0"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^6.0.26",
+    "@storybook/addon-links": "^6.0.26",
+    "@storybook/react": "^6.0.26",
     "@types/classnames": "^2.2.10"
   }
 }

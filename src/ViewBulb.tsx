@@ -17,9 +17,11 @@ const useStyles = createUseStyles({
     },
 });
 
-const BulbComponent: FC<{
+export interface BulbProps {
     bulbStatus: Bulb;
-}> = props => {
+}
+
+const ViewBulb: FC<BulbProps> = props => {
     const classes = useStyles();
     const cx = classNames.bind(classes);
 
@@ -34,4 +36,4 @@ const BulbComponent: FC<{
     );
 };
 
-export default BulbComponent;
+export default ViewBulb;
