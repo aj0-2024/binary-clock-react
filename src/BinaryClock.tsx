@@ -1,4 +1,14 @@
-import React, { FC, HTMLAttributes, ReactChild } from "react";
+import React, { FC, HTMLAttributes, ReactChild, useState } from "react";
+import { createUseStyles } from "react-jss";
+import ViewTimeUnit from "./ViewTimeUnit";
+
+const useStyles = createUseStyles({
+    container: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+});
 
 interface BulbColor {
     offColor: string;
@@ -14,5 +24,8 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
  * A binary clock component
  */
 export const BinaryClock: FC<Props> = () => {
-    return <div />;
+    const classes = useStyles();
+    const [currDate, setDate] = useState<Date>(new Date());
+
+    return <div className={classes.container}></div>;
 };

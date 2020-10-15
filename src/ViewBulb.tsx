@@ -5,23 +5,26 @@ import classNames from "classnames/bind";
 
 const useStyles = createUseStyles({
     base: {
-        width: 36,
-        height: 36,
+        width: 24,
+        height: 24,
         margin: 4,
+        borderRadius: "50%",
+        border: "0.5px solid black",
+        transition: "0.5s background",
     },
     on: {
-        background: "#FAFAFA",
+        background: "#F5A623",
     },
     off: {
-        background: "#F5A623",
+        background: "#FAFAFA",
     },
 });
 
 export interface BulbProps {
-    bulbStatus: Bulb;
+    status: Bulb;
 }
 
-const ViewBulb: FC<BulbProps> = props => {
+const ViewBulb: FC<BulbProps> = (props) => {
     const classes = useStyles();
     const cx = classNames.bind(classes);
 
