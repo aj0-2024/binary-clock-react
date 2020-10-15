@@ -8,9 +8,9 @@ const useStyles = createUseStyles({
         width: 24,
         height: 24,
         margin: 4,
-        borderRadius: "50%",
-        border: "0.5px solid black",
-        transition: "0.5s background",
+        borderRadius: 8,
+        transition: "0.25s background",
+        transitionTimingFunction: "ease-in-out",
     },
     on: {
         background: "#F5A623",
@@ -27,13 +27,14 @@ export interface BulbProps {
 const ViewBulb: FC<BulbProps> = (props) => {
     const classes = useStyles();
     const cx = classNames.bind(classes);
+    const { status } = props;
 
     return (
         <div
             className={cx({
                 base: true,
-                on: props.bulbStatus === Bulb.On,
-                off: props.bulbStatus === Bulb.Off,
+                on: status === Bulb.On,
+                off: status === Bulb.Off,
             })}
         />
     );

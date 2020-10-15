@@ -18,17 +18,17 @@ const useStyles = createUseStyles({
 
 export interface TimeUnitProps {
     value: TimeUnit;
-    hourDisplay?: boolean;
+    hourDisplayMode?: boolean;
 }
 
 const ViewTimeUnit: FC<TimeUnitProps> = (props) => {
     const classes = useStyles();
-    const { value, hourDisplay } = props;
+    const { value, hourDisplayMode } = props;
 
     return (
         <div className={classes.container}>
             <div className={classes.timeSection}>
-                {hourDisplay && <ViewBulb status={value.a3} />}
+                {!hourDisplayMode && <ViewBulb status={value.a3} />}
                 <ViewBulb status={value.a2} />
                 <ViewBulb status={value.a1} />
             </div>

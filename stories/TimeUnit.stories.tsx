@@ -26,4 +26,5 @@ Default.args = {
         b2: Bulb.Off,
         b1: Bulb.Off,
     },
+    hourDisplayMode: false,
 };
