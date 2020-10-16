@@ -1,5 +1,5 @@
 import React from "react";
-import { createThemeing } from "react-jss";
+import { createTheming } from "react-jss";
 
 export interface Theme {
     primaryColor: string;

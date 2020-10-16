@@ -2,21 +2,23 @@ import React, { FC } from "react";
 import { Bulb } from "binary-clock-core";
 import { createUseStyles } from "react-jss";
 import classNames from "classnames/bind";
+import { Theme, useTheme } from "./ThemeProvider";
 
 const useStyles = createUseStyles({
     base: {
         width: 24,
         height: 24,
-        margin: 4,
-        borderRadius: 8,
-        transition: "0.25s background",
-        transitionTimingFunction: "ease-in-out",
+        margin: 2,
+        borderRadius: 4,
+        transition: "all 0.3s",
+        transitionTimingFunction: "cubic-bezier(.25,.8,.25,1)",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
     },
     on: {
-        background: "#F5A623",
+        background: (theme: Theme) => theme.primaryColor,
     },
     off: {
-        background: "#FAFAFA",
+        background: (theme: Theme) => theme.backgroundColor,
     },
 });
 
@@ -25,7 +27,8 @@ export interface BulbProps {
 }
 
 const ViewBulb: FC<BulbProps> = (props) => {
-    const classes = useStyles();
+    const theme = useTheme();
+    const classes = useStyles(theme);
     const cx = classNames.bind(classes);
     const { status } = props;
 

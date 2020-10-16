@@ -17,20 +17,16 @@ const useStyles = createUseStyles({
     },
 });
 
-interface BulbColor {
-    offColor: string;
-    onColor: string;
-}
-
-export interface Props extends HTMLAttributes<HTMLDivElement> {
-    theme?: Theme;
+export interface BinaryClockProps extends HTMLAttributes<HTMLDivElement> {
+    primaryColor?: string;
+    backgroundColor?: string;
     children?: ReactChild;
 }
 
 /**
  * A binary clock component
  */
-export const BinaryClock: FC<Props> = () => {
+export const BinaryClock: FC<BinaryClockProps> = (props) => {
     const classes = useStyles();
     const [currDate, setDate] = useState<Date>(new Date());
 
@@ -38,15 +34,22 @@ export const BinaryClock: FC<Props> = () => {
         setDate(new Date());
     }, 1000);
 
+    const theme = {
+        primaryColor: props.primaryColor || "#F5A623",
+        backgroundColor: props.backgroundColor || "#FAFAFA",
+    };
+
     const currTime = getTime(currDate);
     return (
-        <div className={classes.container}>
-            <ViewTimeUnit hourDisplayMode={true} value={currTime.hours} />
-            <span className={classes.separator}>:</span>
-            <ViewTimeUnit value={currTime.minutes} />
-            <span className={classes.separator}>:</span>
-            <ViewTimeUnit value={currTime.seconds} />
-        </div>
+        <ThemeProvider theme={theme}>
+            <div className={classes.container}>
+                <ViewTimeUnit hourDisplayMode={true} value={currTime.hours} />
+                <span className={classes.separator}>:</span>
+                <ViewTimeUnit value={currTime.minutes} />
+                <span className={classes.separator}>:</span>
+                <ViewTimeUnit value={currTime.seconds} />
+            </div>
+        </ThemeProvider>
     );
 };
 
