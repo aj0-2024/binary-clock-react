@@ -3,6 +3,7 @@ import { createUseStyles } from "react-jss";
 import ViewTimeUnit from "./ViewTimeUnit";
 import useInterval from "@use-it/interval";
 import { getTime } from "binary-clock-core";
+import { Theme, ThemeProvider } from "./ThemeProvider";
 
 const useStyles = createUseStyles({
     container: {
@@ -22,7 +23,7 @@ interface BulbColor {
 }
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-    theme?: BulbColor;
+    theme?: Theme;
     children?: ReactChild;
 }
 
