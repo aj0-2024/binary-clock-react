@@ -20,6 +20,7 @@ const useStyles = createUseStyles({
 export interface BinaryClockProps extends HTMLAttributes<HTMLDivElement> {
     primaryColor?: string;
     backgroundColor?: string;
+    size?: number;
     children?: ReactChild;
 }
 
@@ -37,6 +38,7 @@ export const BinaryClock: FC<BinaryClockProps> = (props) => {
     const theme = {
         primaryColor: props.primaryColor || "#F5A623",
         backgroundColor: props.backgroundColor || "#FAFAFA",
+        size: props.size || 24,
     };
 
     const currTime = getTime(currDate);

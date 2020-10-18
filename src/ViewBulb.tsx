@@ -6,10 +6,10 @@ import { Theme, useTheme } from "./ThemeProvider";
 
 const useStyles = createUseStyles({
     base: {
-        width: 24,
-        height: 24,
+        width: (theme: Theme) => theme.size,
+        height: (theme: Theme) => theme.size,
         margin: 2,
-        borderRadius: 4,
+        borderRadius: 6,
         transition: "all 0.3s",
         transitionTimingFunction: "cubic-bezier(.25,.8,.25,1)",
     },
