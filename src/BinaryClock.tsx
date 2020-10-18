@@ -35,7 +35,7 @@ export const BinaryClock: FC<BinaryClockProps> = (props) => {
         setDate(new Date());
     }, 1000);
 
-    const theme = {
+    const theme: Theme = {
         primaryColor: props.primaryColor || "#F5A623",
         backgroundColor: props.backgroundColor || "#FAFAFA",
         size: props.size || 24,
