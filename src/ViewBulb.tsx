@@ -3,6 +3,7 @@ import { Bulb } from "binary-clock-core";
 import { createUseStyles } from "react-jss";
 import clsx from "clsx";
 import { Theme, useTheme } from "./ThemeProvider";
+import "./bulb.module.css";
 
 const useStyles = createUseStyles({
     base: {
