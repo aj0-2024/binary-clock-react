@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Bulb } from "binary-clock-core";
 import { createUseStyles } from "react-jss";
-import classNames from "classnames/bind";
+import clsx from "clsx";
 import { Theme, useTheme } from "./ThemeProvider";
 
 const useStyles = createUseStyles({
@@ -28,15 +28,14 @@ export interface BulbProps {
 const ViewBulb: FC<BulbProps> = (props) => {
     const theme = useTheme();
     const classes = useStyles(theme);
-    const cx = classNames.bind(classes);
     const { status } = props;
 
     return (
         <div
-            className={cx({
-                base: true,
-                on: status === Bulb.On,
-                off: status === Bulb.Off,
+            className={clsx({
+                [classes.base]: true,
+                [classes.on]: status === Bulb.On,
+                [classes.off]: status === Bulb.Off,
             })}
         />
     );
