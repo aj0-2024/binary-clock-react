@@ -1,0 +1,16 @@
+.base {
+    margin: 2px;
+    border-radius: 6px;
+    transition: all 0.3s;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.bulb-md {
+    width: 24px;
+    height: 24px;
+}
+
+.bulb-lg {
+    width: 48px;
+    height: 48px;
+}

@@ -3,17 +3,10 @@ import { Bulb } from "binary-clock-core";
 import { createUseStyles } from "react-jss";
 import clsx from "clsx";
 import { Theme, useTheme } from "./ThemeProvider";
-import "./bulb.module.css";
+import css from "./bulb.module.css";
+console.log(css);
 
 const useStyles = createUseStyles({
-    base: {
-        width: (theme: Theme) => theme.size,
-        height: (theme: Theme) => theme.size,
-        margin: 2,
-        borderRadius: 6,
-        transition: "all 0.3s",
-        transitionTimingFunction: "cubic-bezier(.25,.8,.25,1)",
-    },
     on: {
         background: (theme: Theme) => theme.primaryColor,
     },
@@ -34,7 +27,7 @@ const ViewBulb: FC<BulbProps> = (props) => {
     return (
         <div
             className={clsx({
-                [classes.base]: true,
+                [css.base]: true,
                 [classes.on]: status === Bulb.On,
                 [classes.off]: status === Bulb.Off,
             })}

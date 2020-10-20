@@ -22,8 +22,7 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
-    "react": ">=16",
-    "react-jss": "^10.4.0"
+    "react": ">=16"
   },
   "husky": {
     "hooks": {
@@ -61,7 +60,9 @@
     "@storybook/react": "^6.0.26",
     "@types/classnames": "^2.2.10",
     "@types/react": "^16.9.52",
-    "size-limit": "^4.6.0",
-    "react-jss": "^10.4.0"
+    "node-sass": "^4.14.1",
+    "react-jss": "^10.4.0",
+    "rollup-plugin-postcss": "^3.1.8",
+    "size-limit": "^4.6.0"
   }
 }
