@@ -4,7 +4,6 @@ import { createUseStyles } from "react-jss";
 import clsx from "clsx";
 import { Theme, useTheme } from "./ThemeProvider";
 import styles from "./ViewBulb.css";
-console.log(styles);
 
 const useStyles = createUseStyles({
     on: {
