@@ -53,6 +53,10 @@
     "binary-clock-core": "^2.0.0",
     "clsx": "^1.1.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anirudh-janga/binary-clock-react"
+  },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^4.6.0",
     "@storybook/addon-essentials": "^6.0.26",
