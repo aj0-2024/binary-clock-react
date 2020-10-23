@@ -3,7 +3,7 @@ import { Bulb } from "binary-clock-core";
 import { createUseStyles } from "react-jss";
 import clsx from "clsx";
 import { Theme, useTheme } from "./ThemeProvider";
-import styles from "./ViewBulb.css";
+import "./ViewBulb.css";
 
 const useStyles = createUseStyles({
     on: {
@@ -26,7 +26,8 @@ const ViewBulb: FC<BulbProps> = (props) => {
     return (
         <div
             className={clsx({
-                base: true,
+                "bin-clock-bulb-base": true,
+                "bin-clock-bulb-md": true,
                 [classes.on]: status === Bulb.On,
                 [classes.off]: status === Bulb.Off,
             })}
