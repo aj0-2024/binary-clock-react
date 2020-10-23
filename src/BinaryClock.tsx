@@ -3,7 +3,7 @@ import { createUseStyles } from "react-jss";
 import ViewTimeUnit from "./ViewTimeUnit";
 import useInterval from "@use-it/interval";
 import { getTime } from "binary-clock-core";
-import { Theme, ThemeProvider } from "./ThemeProvider";
+import { Theme, ThemeContext } from "./ThemeContext";
 
 const useStyles = createUseStyles({
     container: {
@@ -20,7 +20,7 @@ const useStyles = createUseStyles({
 export interface BinaryClockProps extends HTMLAttributes<HTMLDivElement> {
     primaryColor?: string;
     backgroundColor?: string;
-    size?: number;
+    size?: "medium" | "large";
     children?: ReactChild;
 }
 
@@ -38,12 +38,12 @@ export const BinaryClock: FC<BinaryClockProps> = (props) => {
     const theme: Theme = {
         primaryColor: props.primaryColor || "#F5A623",
         backgroundColor: props.backgroundColor || "#FAFAFA",
-        size: props.size || 24,
+        size: props.size || "medium",
     };
 
     const currTime = getTime(currDate);
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeContext.Provider value={theme}>
             <div className={classes.container}>
                 <ViewTimeUnit hourDisplayMode={true} value={currTime.hours} />
                 <span className={classes.separator}>:</span>
@@ -51,7 +51,7 @@ export const BinaryClock: FC<BinaryClockProps> = (props) => {
                 <span className={classes.separator}>:</span>
                 <ViewTimeUnit value={currTime.seconds} />
             </div>
-        </ThemeProvider>
+        </ThemeContext.Provider>
     );
 };
 

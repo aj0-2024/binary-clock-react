@@ -1,20 +1,7 @@
 import React, { FC } from "react";
 import { TimeUnit } from "binary-clock-core";
 import ViewBulb from "./ViewBulb";
-import { createUseStyles } from "react-jss";
-
-const useStyles = createUseStyles({
-    container: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-end",
-    },
-    timeSection: {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-    },
-});
+import "./ViewTimeUnit.css";
 
 export interface TimeUnitProps {
     value: TimeUnit;
@@ -22,18 +9,17 @@ export interface TimeUnitProps {
 }
 
 const ViewTimeUnit: FC<TimeUnitProps> = (props) => {
-    const classes = useStyles();
     const { value, hourDisplayMode } = props;
 
     return (
-        <div className={classes.container}>
-            <div className={classes.timeSection}>
+        <div className="bin-clock-time-unit-container">
+            <div className="bin-clock-time-unit-section">
                 {!hourDisplayMode && <ViewBulb status={value.a3} />}
                 <ViewBulb status={value.a2} />
                 <ViewBulb status={value.a1} />
             </div>
 
-            <div className={classes.timeSection}>
+            <div className="bin-clock-time-unit-section">
                 <ViewBulb status={value.b4} />
                 <ViewBulb status={value.b3} />
                 <ViewBulb status={value.b2} />

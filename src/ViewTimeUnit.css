@@ -1,0 +1,11 @@
+.bin-clock-time-unit-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.bin-clock-time-unit-section {
+    display: flex;
+    flex-direction: column;
+    alignitems: center;
+}

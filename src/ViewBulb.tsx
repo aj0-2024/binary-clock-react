@@ -1,35 +1,28 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { Bulb } from "binary-clock-core";
-import { createUseStyles } from "react-jss";
 import clsx from "clsx";
-import { Theme, useTheme } from "./ThemeProvider";
 import "./ViewBulb.css";
-
-const useStyles = createUseStyles({
-    on: {
-        background: (theme: Theme) => theme.primaryColor,
-    },
-    off: {
-        background: (theme: Theme) => theme.backgroundColor,
-    },
-});
+import { ThemeContext } from "./ThemeContext";
 
 export interface BulbProps {
     status: Bulb;
 }
 
 const ViewBulb: FC<BulbProps> = (props) => {
-    const theme = useTheme();
-    const classes = useStyles(theme);
+    const theme = useContext(ThemeContext);
     const { status } = props;
+
+    const runtimeStyle = {
+        background:
+            status === Bulb.On ? theme.primaryColor : theme.backgroundColor,
+    };
 
     return (
         <div
+            style={runtimeStyle}
             className={clsx({
                 "bin-clock-bulb-base": true,
                 "bin-clock-bulb-md": true,
-                [classes.on]: status === Bulb.On,
-                [classes.off]: status === Bulb.Off,
             })}
         />
     );
