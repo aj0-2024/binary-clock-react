@@ -1,0 +1,10 @@
+.bin-clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bin-clock-separator {
+    margin: 0px 8px;
+    font-size: 24px;
+}
