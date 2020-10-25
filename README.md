@@ -25,6 +25,7 @@ import { BinaryClock } from "binary-clock-react";
 {
     // pass a custom classname to change the look when bulb is on
     bulbOnClassName: <custom-class-name>,
+    
     // pass a custom classname to change the look when bulb is off
     bulbOffClassName: <custom-class-name>,
 }
