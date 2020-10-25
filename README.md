@@ -1,8 +1,12 @@
 # Binary Clock React Component
-Just a simple binary clock component. 
+Customizable binary clock component.
 
 ## Example
 ![Sample](./assets/sample.gif)
+
+## Features
+- `~1.3 KB` size.
+- Customizable styles.
 
 ## Installation
 ```
