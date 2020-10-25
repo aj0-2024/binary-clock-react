@@ -19,12 +19,10 @@ import { BinaryClock } from "binary-clock-react";
 ## Customization
 ```
 {
-    // this will be used to color the bulb when it is on
-    primaryColor: "#000000",
-    // this will be used to color the bulb when it is off
-    backgroundColor: "#FAFAFA",
-    // size of the bulb
-    size: 24
+    // pass a custom classname to change the look when bulb is on
+    bulbOnClassName: <custom-class-name>,
+    // pass a custom classname to change the look when bulb is off
+    bulbOffClassName: <custom-class-name>,
 }
 ```
 
