@@ -6,9 +6,8 @@ import { Theme, ThemeContext } from "./ThemeContext";
 import "./BinaryClock.css";
 
 export interface BinaryClockProps extends HTMLAttributes<HTMLDivElement> {
-    primaryColor?: string;
-    backgroundColor?: string;
-    size?: "medium" | "large";
+    bulbOnClassName?: string;
+    bulbOffClassName?: string;
     children?: ReactChild;
 }
 
@@ -23,9 +22,8 @@ export const BinaryClock: FC<BinaryClockProps> = (props) => {
     }, 1000);
 
     const theme: Theme = {
-        primaryColor: props.primaryColor || "#F5A623",
-        backgroundColor: props.backgroundColor || "#FAFAFA",
-        size: props.size || "medium",
+        bulbOnClassName: props.bulbOnClassName,
+        bulbOffClassName: props.bulbOffClassName,
     };
 
     const currTime = getTime(currDate);

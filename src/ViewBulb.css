@@ -1,16 +1,16 @@
 .bin-clock-bulb-base {
+    width: 24px;
+    height: 24px;
     margin: 2px;
     border-radius: 6px;
     transition: all 0.1s;
     transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.bin-clock-bulb-md {
-    width: 24px;
-    height: 24px;
+.bin-clock-bulb-on {
+    background: #000000;
 }
 
-.bin-clock-bulb-lg {
-    width: 48px;
-    height: 48px;
+.bin-clock-bulb-off {
+    background: #fafafa;
 }

@@ -1,12 +1,11 @@
-import React from "react";
+import { createContext } from "react";
+
 export interface Theme {
-    primaryColor: string;
-    backgroundColor: string;
-    size: "medium" | "large";
+    bulbOnClassName?: string;
+    bulbOffClassName?: string;
 }
 
-export const ThemeContext = React.createContext({
-    primaryColor: "#000000",
-    backgroundColor: "#FAFAFA",
-    size: "medium",
+export const ThemeContext = createContext<Theme>({
+    bulbOnClassName: "",
+    bulbOffClassName: "",
 });

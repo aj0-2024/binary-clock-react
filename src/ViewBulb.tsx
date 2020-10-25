@@ -10,19 +10,15 @@ export interface BulbProps {
 
 const ViewBulb: FC<BulbProps> = (props) => {
     const theme = useContext(ThemeContext);
-    const { status } = props;
-
-    const runtimeStyle = {
-        background:
-            status === Bulb.On ? theme.primaryColor : theme.backgroundColor,
-    };
 
     return (
         <div
-            style={runtimeStyle}
             className={clsx({
                 "bin-clock-bulb-base": true,
-                "bin-clock-bulb-md": true,
+                [theme.bulbOnClassName || "bin-clock-bulb-on"]:
+                    props.status === Bulb.On,
+                [theme.bulbOffClassName || "bin-clock-bulb-off"]:
+                    props.status === Bulb.Off,
             })}
         />
     );
