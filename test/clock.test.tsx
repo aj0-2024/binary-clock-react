@@ -1,6 +1,6 @@
 import React from "react";
 import * as ReactDOM from "react-dom";
-import { BinaryClock } from "../src";
+import { BinaryClock } from "../dist";
 
 describe("BinaryClock component", () => {
     it("renders without crashing", () => {
