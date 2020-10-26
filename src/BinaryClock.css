@@ -1,6 +1,8 @@
 .bin-clock-root {
     margin: 16px;
     padding: 16px;
+    border: 6px double lightgrey;
+    border-radius: 12px;
 }
 
 .bin-clock-container {
