@@ -13,6 +13,8 @@ import "./BinaryClock.css";
 
 export interface BinaryClockProps extends HTMLAttributes<HTMLDivElement> {
     rootClassName?: string;
+    separatorClassName?: string;
+    separatorCharacter?: string;
     bulbOnClassName?: string;
     bulbOffClassName?: string;
     children?: ReactChild;
@@ -34,6 +36,21 @@ const useCurrDateTime = () => {
     return currDateTime;
 };
 
+const Separator: FC<{
+    className?: string;
+    character?: string;
+}> = (props) => {
+    return (
+        <span
+            className={clsx({
+                [props.className || "bin-clock-separator"]: true,
+            })}
+        >
+            {props.character || ":"}
+        </span>
+    );
+};
+
 /**
  * A binary clock component
  */
@@ -42,6 +59,7 @@ export const BinaryClock: FC<BinaryClockProps> = (props) => {
 
     const theme: Theme = {
         rootClassName: props.rootClassName,
+        separatorClassName: props.separatorClassName,
         bulbOnClassName: props.bulbOnClassName,
         bulbOffClassName: props.bulbOffClassName,
     };
@@ -56,9 +74,15 @@ export const BinaryClock: FC<BinaryClockProps> = (props) => {
                 })}
             >
                 <ViewTimeUnit hourDisplayMode={true} value={currTime.hours} />
-                <span className="bin-clock-separator">:</span>
+                <Separator
+                    className={theme.separatorClassName}
+                    character={props.separatorCharacter}
+                />
                 <ViewTimeUnit value={currTime.minutes} />
-                <span className="bin-clock-separator">:</span>
+                <Separator
+                    className={theme.separatorClassName}
+                    character={props.separatorCharacter}
+                />
                 <ViewTimeUnit value={currTime.seconds} />
             </div>
         </ThemeContext.Provider>
