@@ -23,10 +23,13 @@ import { BinaryClock } from "binary-clock-react";
 ## Customization
 ```
 {
-    // pass a custom classname to change the look when bulb is on
+    // pass your classname to customize the root container style
+    rootClassName: <custom-class-name>,
+    
+    // pass your classname to customize the bulb when it's on
     bulbOnClassName: <custom-class-name>,
     
-    // pass a custom classname to change the look when bulb is off
+    // pass your classname to customize the bulb when it's off
     bulbOffClassName: <custom-class-name>,
 }
 ```
