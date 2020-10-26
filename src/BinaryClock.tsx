@@ -1,17 +1,25 @@
-import React, { FC, HTMLAttributes, ReactChild, useState, useEffect } from "react";
+import React, {
+    FC,
+    HTMLAttributes,
+    ReactChild,
+    useState,
+    useEffect,
+} from "react";
 import ViewTimeUnit from "./ViewTimeUnit";
 import { getTime } from "binary-clock-core";
 import { Theme, ThemeContext } from "./ThemeContext";
+import clsx from "clsx";
 import "./BinaryClock.css";
 
 export interface BinaryClockProps extends HTMLAttributes<HTMLDivElement> {
+    rootClassName?: string;
     bulbOnClassName?: string;
     bulbOffClassName?: string;
     children?: ReactChild;
 }
 
 const useCurrDateTime = () => {
-    const [ currDateTime, setCurrDateTime ] = useState<Date>(new Date());
+    const [currDateTime, setCurrDateTime] = useState<Date>(new Date());
 
     // updated the currDateTime value every second
     const updateInterval = 1000;
@@ -24,7 +32,7 @@ const useCurrDateTime = () => {
     });
 
     return currDateTime;
-}
+};
 
 /**
  * A binary clock component
@@ -33,6 +41,7 @@ export const BinaryClock: FC<BinaryClockProps> = (props) => {
     const currDateTime = useCurrDateTime();
 
     const theme: Theme = {
+        rootClassName: props.rootClassName,
         bulbOnClassName: props.bulbOnClassName,
         bulbOffClassName: props.bulbOffClassName,
     };
@@ -40,7 +49,12 @@ export const BinaryClock: FC<BinaryClockProps> = (props) => {
     const currTime = getTime(currDateTime);
     return (
         <ThemeContext.Provider value={theme}>
-            <div className="bin-clock-container">
+            <div
+                className={clsx({
+                    [props.rootClassName || "bin-clock-root"]: true,
+                    "bin-clock-container": true,
+                })}
+            >
                 <ViewTimeUnit hourDisplayMode={true} value={currTime.hours} />
                 <span className="bin-clock-separator">:</span>
                 <ViewTimeUnit value={currTime.minutes} />

@@ -1,3 +1,8 @@
+.bin-clock-root {
+    margin: 16px;
+    padding: 16px;
+}
+
 .bin-clock-container {
     display: flex;
     justify-content: center;
