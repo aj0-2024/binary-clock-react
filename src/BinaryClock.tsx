@@ -1,40 +1,21 @@
-import React, {
-    FC,
-    HTMLAttributes,
-    ReactChild,
-    useState,
-    useEffect,
-} from "react";
+import React, { FC, useState, useEffect } from "react";
 import ViewTimeUnit from "./ViewTimeUnit";
 import { getTime } from "binary-clock-core";
 import { Theme, ThemeContext } from "./ThemeContext";
 import clsx from "clsx";
 import "./BinaryClock.css";
 
-export interface BinaryClockProps extends HTMLAttributes<HTMLDivElement> {
+export interface BinaryClockProps {
+    // data
+    defaultValue?: Date;
+
+    // styles
     rootClassName?: string;
     separatorClassName?: string;
     separatorCharacter?: string;
     bulbOnClassName?: string;
     bulbOffClassName?: string;
-    children?: ReactChild;
 }
-
-const useCurrDateTime = () => {
-    const [currDateTime, setCurrDateTime] = useState<Date>(new Date());
-
-    // updated the currDateTime value every second
-    const updateInterval = 1000;
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrDateTime(new Date());
-        }, updateInterval);
-
-        return () => clearInterval(intervalId);
-    });
-
-    return currDateTime;
-};
 
 const Separator: FC<{
     className?: string;
@@ -51,12 +32,28 @@ const Separator: FC<{
     );
 };
 
+const useDateTime = (defaultValue: Date) => {
+    const [currDateTime, setCurrDateTime] = useState<Date>(defaultValue);
+
+    // updated the currDateTime value every second
+    const updateInterval = 1000;
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            const newValue = new Date(currDateTime);
+            newValue.setSeconds(newValue.getSeconds() + 1);
+            setCurrDateTime(newValue);
+        }, updateInterval);
+
+        return () => clearInterval(intervalId);
+    });
+
+    return currDateTime;
+};
+
 /**
  * A binary clock component
  */
 export const BinaryClock: FC<BinaryClockProps> = (props) => {
-    const currDateTime = useCurrDateTime();
-
     const theme: Theme = {
         rootClassName: props.rootClassName,
         separatorClassName: props.separatorClassName,
@@ -64,7 +61,9 @@ export const BinaryClock: FC<BinaryClockProps> = (props) => {
         bulbOffClassName: props.bulbOffClassName,
     };
 
-    const currTime = getTime(currDateTime);
+    const dateValue = useDateTime(props.defaultValue || new Date());
+    const currTime = getTime(dateValue);
+
     return (
         <ThemeContext.Provider value={theme}>
             <div
